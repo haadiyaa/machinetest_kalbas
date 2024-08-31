@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:machinetest_kalbas/app/resources/constants.dart';
+import 'package:machinetest_kalbas/app/view/detailspage/view/detailspage.dart';
 
 class MySlidableCard extends StatelessWidget {
   const MySlidableCard({
@@ -35,56 +36,63 @@ class MySlidableCard extends StatelessWidget {
           horizontal: 10,
           vertical: 8,
         ),
-        child: Card(
-          elevation: 10,
-          child: Container(
-            padding: const EdgeInsets.all(10),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  height: size.width * 0.25,
-                  width: size.width * 0.2,
-                  decoration: BoxDecoration(
-                    color: Constants.red,
-                    borderRadius: BorderRadius.circular(12),
+        child: GestureDetector(
+          onTap: (){
+            Navigator.of(context).push(MaterialPageRoute(builder: (_)=>DetailsPage()));
+          },
+          child: Card(
+            elevation: 10,
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    height: size.width * 0.25,
+                    width: size.width * 0.2,
+                    decoration: BoxDecoration(
+                      color: Constants.red,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
-                ),
-                Constants.width10,
-                const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'data',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    Text(
-                      'fghjkkkjhgfg',
-                      style: TextStyle(
-                        fontWeight: FontWeight.normal,
-                        fontSize: 14,
-                      ),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    Row(
+                  Constants.width10,
+                  const Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Icon(Icons.calendar_month),
                         Text(
-                          'data',
-                          maxLines: 1,
+                          'data scshbwdw djwhdwgdwydg wgdfwtfdutwdf gwdwvduwdgy',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                          maxLines: 2,
                           overflow: TextOverflow.ellipsis,
+                        ),
+                        Text(
+                          'fghjkkkjhgfg sbhdwyguwy bdhwdwhd wdbwhbdwyd wdwygduy',
+                          style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 14,
+                          ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        Row(
+                          children: [
+                            Icon(Icons.calendar_month),
+                            Text(
+                              'data',
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            )
+                          ],
                         )
                       ],
-                    )
-                  ],
-                ),
-              ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
