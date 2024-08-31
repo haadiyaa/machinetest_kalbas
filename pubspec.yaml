@@ -38,6 +38,7 @@ dependencies:
   flutter_bloc: ^8.1.6
   flutter_slidable: ^3.1.1
   http: ^1.2.0
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:

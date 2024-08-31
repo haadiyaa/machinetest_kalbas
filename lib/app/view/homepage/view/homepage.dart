@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:machinetest_kalbas/app/resources/constants.dart';
 import 'package:machinetest_kalbas/app/resources/styles.dart';
+import 'package:machinetest_kalbas/app/view/homepage/widgets/favlist.dart';
 import 'package:machinetest_kalbas/app/view/homepage/widgets/myslidablecard.dart';
+import 'package:machinetest_kalbas/app/view/homepage/widgets/newslist.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -76,26 +77,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       body: TabBarView(
         controller: _tabController,
         children: <Widget>[
-          SizedBox(
-            height: size.height,
-            width: size.width * 0.9,
-            child: ListView.builder(
-              itemCount: 10,
-              itemBuilder: (BuildContext context, int index) {
-                return MySlidableCard(size: size,index:index);
-              },
-            ),
-          ),
-          SizedBox(
-            height: size.height,
-            width: size.width * 0.9,
-            child: ListView.builder(
-              itemCount: 10,
-              itemBuilder: (BuildContext context, int index) {
-                return MySlidableCard(size: size,index:index);
-              },
-            ),
-          ),
+          NewsListWrapper(size: size),
+          FavList(size: size),
         ],
       ),
     );

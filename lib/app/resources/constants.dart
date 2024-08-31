@@ -6,6 +6,7 @@ class Constants {
   static const Color red=Colors.red;
   static const Color black=Colors.black;
   static const Color grey=Colors.grey;
+  static const Color lightgrey=Color.fromARGB(255, 216, 216, 216);
   static const Color white=Colors.white;
   static const Color transparent=Colors.transparent;
   static const Color lightblue=Color.fromARGB(255, 226, 240, 250);

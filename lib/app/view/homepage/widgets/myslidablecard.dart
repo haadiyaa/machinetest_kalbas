@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:machinetest_kalbas/app/model/newsmodel.dart';
 import 'package:machinetest_kalbas/app/resources/constants.dart';
 import 'package:machinetest_kalbas/app/view/detailspage/view/detailspage.dart';
 
@@ -9,10 +9,12 @@ class MySlidableCard extends StatelessWidget {
     super.key,
     required this.size,
     required this.index,
+    required this.newsModel,
   });
 
   final Size size;
   final int index;
+  final NewsModel newsModel;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +23,11 @@ class MySlidableCard extends StatelessWidget {
         motion: const ScrollMotion(),
         children: [
           SlidableAction(
+            spacing: 8,
+            borderRadius: const BorderRadius.only(
+              topRight: Radius.circular(12),
+              bottomRight: Radius.circular(12),
+            ),
             key: ValueKey(index),
             flex: 1,
             onPressed: (_) {},
@@ -31,68 +38,77 @@ class MySlidableCard extends StatelessWidget {
           ),
         ],
       ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 10,
-          vertical: 8,
-        ),
-        child: GestureDetector(
-          onTap: (){
-            Navigator.of(context).push(MaterialPageRoute(builder: (_)=>DetailsPage()));
-          },
-          child: Card(
-            elevation: 10,
-            child: Container(
-              padding: const EdgeInsets.all(10),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    height: size.width * 0.25,
-                    width: size.width * 0.2,
-                    decoration: BoxDecoration(
-                      color: Constants.red,
-                      borderRadius: BorderRadius.circular(12),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (_) => const DetailsPage()));
+        },
+        child: Card(
+          elevation: 10,
+          child: Container(
+            // width: size.width*0.9,
+            padding: const EdgeInsets.all(10),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  height: size.width * 0.25,
+                  width: size.width * 0.2,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        newsModel.articles[index].urlToImage ??
+                            'https://thumbs.dreamstime.com/b/news-network-mobile-device-89835976.jpg',
+                      ),
+                      fit: BoxFit.cover
                     ),
                   ),
-                  Constants.width10,
-                  const Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'data scshbwdw djwhdwgdwydg wgdfwtfdutwdf gwdwvduwdgy',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
+                ),
+                Constants.width10,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        newsModel.articles[index].title,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
                         ),
-                        Text(
-                          'fghjkkkjhgfg sbhdwyguwy bdhwdwhd wdbwhbdwyd wdwygduy',
-                          style: TextStyle(
-                            fontWeight: FontWeight.normal,
-                            fontSize: 14,
-                          ),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Text(
+                        newsModel.articles[index].content,
+                        style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          fontSize: 14,
                         ),
-                        Row(
-                          children: [
-                            Icon(Icons.calendar_month),
-                            Text(
-                              'data',
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            )
-                          ],
-                        )
-                      ],
-                    ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.calendar_month,
+                            size: 18,
+                            color: Constants.grey,
+                          ),
+                          Constants.width5,
+                          Text(
+                            newsModel.articles[index].publishedAt.toString(),
+                            style:
+                                TextStyle(color: Constants.grey, fontSize: 14),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          )
+                        ],
+                      )
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
