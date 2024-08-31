@@ -40,8 +40,14 @@ class MySlidableCard extends StatelessWidget {
       ),
       child: GestureDetector(
         onTap: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (_) => const DetailsPage()));
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (_) => DetailsPage(
+                newsModel: newsModel,
+                index: index,
+              ),
+            ),
+          );
         },
         child: Card(
           elevation: 10,
@@ -57,12 +63,11 @@ class MySlidableCard extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     image: DecorationImage(
-                      image: NetworkImage(
-                        newsModel.articles[index].urlToImage ??
-                            'https://thumbs.dreamstime.com/b/news-network-mobile-device-89835976.jpg',
-                      ),
-                      fit: BoxFit.cover
-                    ),
+                        image: NetworkImage(
+                          newsModel.articles[index].urlToImage ??
+                              'https://thumbs.dreamstime.com/b/news-network-mobile-device-89835976.jpg',
+                        ),
+                        fit: BoxFit.cover),
                   ),
                 ),
                 Constants.width10,
@@ -80,7 +85,7 @@ class MySlidableCard extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                       Text(
-                        newsModel.articles[index].content,
+                        newsModel.articles[index].description!,
                         style: TextStyle(
                           fontWeight: FontWeight.normal,
                           fontSize: 14,

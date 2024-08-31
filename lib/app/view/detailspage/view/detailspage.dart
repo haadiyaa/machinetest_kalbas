@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:machinetest_kalbas/app/model/newsmodel.dart';
 import 'package:machinetest_kalbas/app/resources/constants.dart';
 
 class DetailsPage extends StatelessWidget {
-  const DetailsPage({super.key});
+  const DetailsPage({super.key, required this.newsModel, required this.index});
+
+  final NewsModel newsModel;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +14,7 @@ class DetailsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
-          onTap: (){
+          onTap: () {
             Navigator.pop(context);
           },
           child: const Row(
@@ -33,40 +37,44 @@ class DetailsPage extends StatelessWidget {
                     // width: size.width * 0.9,
                     height: size.height * 0.4,
                     decoration: BoxDecoration(
-                      color: Constants.red,
                       borderRadius: BorderRadius.circular(15),
+                      image: DecorationImage(
+                        image: NetworkImage(newsModel
+                                .articles[index].urlToImage ??
+                            'https://thumbs.dreamstime.com/b/news-network-mobile-device-89835976.jpg'),
+                            fit: BoxFit.cover
+                      ),
                     ),
                   ),
                   const Positioned(
                     right: 10,
                     top: 10,
-                    child: Icon(Icons.favorite),
+                    child: Icon(Icons.favorite_border,color: Constants.black,),
                   ),
                 ],
               ),
               Constants.height5,
-              const Text(
-                'data',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+              Text(
+                newsModel.articles[index].title,
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
               ),
-              const Row(
+               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.calendar_month,
                     size: 18,
                     color: Constants.grey,
                   ),
                   Text(
-                    'dsdwdwdw',
-                    style: TextStyle(
+                    newsModel.articles[index].publishedAt.toString(),
+                    style: const TextStyle(
                       color: Constants.grey,
                     ),
                   ),
                 ],
               ),
               Constants.height10,
-              const Text(
-                  'cbfjhbge efv ehfberu ufb uhyf fdhucbduhcdw cwe cew cweyuwyvubwevweugfbwjhfb sdufdyfdyufsdyuvbsd'),
+              Text(newsModel.articles[index].description!),
             ],
           ),
         ),
