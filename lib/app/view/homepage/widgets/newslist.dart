@@ -49,7 +49,7 @@ class _NewsListState extends State<NewsList> {
           return ListView.separated(
             padding: const EdgeInsets.all(10),
             separatorBuilder: (context, index) => Constants.height10,
-            itemCount: 10,
+            itemCount: newsModel.articles.length,
             itemBuilder: (BuildContext context, int index) {
               return MySlidableCard(
                 size: widget.size,
