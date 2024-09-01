@@ -59,7 +59,12 @@ class _NewsListState extends State<NewsList> {
             },
           );
         }
-        return ShimmerCard(size: size);
+        if (state is NewsLoading) {
+          return ShimmerCard(size: size);
+        }
+        return const Center(
+          child: Text('Error Occured!'),
+        );
       },
     );
   }

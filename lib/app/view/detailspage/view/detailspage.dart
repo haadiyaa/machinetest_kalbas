@@ -74,7 +74,7 @@ class DetailsPage extends StatelessWidget {
                 ],
               ),
               Constants.height10,
-              Text(newsModel.articles[index].description!),
+              Text(newsModel.articles[index].content),
             ],
           ),
         ),

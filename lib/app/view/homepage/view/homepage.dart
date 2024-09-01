@@ -32,6 +32,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Constants.transparent,
         toolbarHeight: 80,
         title: TabBar(
           dividerColor: Constants.transparent,

@@ -14,10 +14,12 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
   final ApiRepository _apiRepository=ApiRepository();
   NewsBloc() : super(NewsInitial()) {
     on<FetchNewsEvent>(_fetchNews);
+    on<AddTofav>(_addtoFav);
   }
 
   Future<FutureOr<void>> _fetchNews(FetchNewsEvent event, Emitter<NewsState> emit) async {
     NewsModel? newsModel;
+    emit(NewsLoading());
     try {
       final Response response=await _apiRepository.fetchNews();
       print('status: ${response.statusCode}');
@@ -35,5 +37,9 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       print(e.toString());
        emit(NewsFetchErrorState(msg: e.toString()));
     }
+  }
+
+  FutureOr<void> _addtoFav(AddTofav event, Emitter<NewsState> emit) {
+    
   }
 }

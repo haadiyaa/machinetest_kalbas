@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class Constants {
-
   //=================colors========================================
   static const Color red=Colors.red;
   static const Color black=Colors.black;

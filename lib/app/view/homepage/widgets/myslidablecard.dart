@@ -107,7 +107,7 @@ class MySlidableCard extends StatelessWidget {
                                 TextStyle(color: Constants.grey, fontSize: 14),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
-                          )
+                          ),
                         ],
                       )
                     ],

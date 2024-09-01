@@ -11,6 +11,8 @@ class NewsFetchedState extends NewsState {
   NewsFetchedState({required this.newsModel});
 }
 
+class NewsLoading extends NewsState {}
+
 class NewsFetchErrorState extends NewsState {
   final String msg;
 
