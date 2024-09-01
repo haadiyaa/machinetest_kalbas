@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:machinetest_kalbas/app/bloc/bloc/news_bloc.dart';
 import 'package:machinetest_kalbas/app/model/newsmodel.dart';
 import 'package:machinetest_kalbas/app/resources/constants.dart';
 import 'package:machinetest_kalbas/app/view/detailspage/view/detailspage.dart';
@@ -30,7 +32,9 @@ class MySlidableCard extends StatelessWidget {
             ),
             key: ValueKey(index),
             flex: 1,
-            onPressed: (_) {},
+            onPressed: (_) {
+              BlocProvider.of<NewsBloc>(context).add(AddTofav(newsModel: newsModel));
+            },
             backgroundColor: Colors.red.shade100,
             foregroundColor: Constants.red,
             icon: Icons.favorite,

@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         controller: _tabController,
         children: <Widget>[
           NewsListWrapper(size: size),
-          FavList(size: size),
+          FavListWrapper(size: size),
         ],
       ),
     );

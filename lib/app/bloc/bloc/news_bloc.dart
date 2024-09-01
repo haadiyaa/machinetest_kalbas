@@ -12,6 +12,7 @@ part 'news_state.dart';
 
 class NewsBloc extends Bloc<NewsEvent, NewsState> {
   final ApiRepository _apiRepository=ApiRepository();
+  List<NewsModel> _favourites=[];
   NewsBloc() : super(NewsInitial()) {
     on<FetchNewsEvent>(_fetchNews);
     on<AddTofav>(_addtoFav);
@@ -40,6 +41,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
   }
 
   FutureOr<void> _addtoFav(AddTofav event, Emitter<NewsState> emit) {
-    
+    _favourites.add(event.newsModel);
+    emit(FavouritesUpdatedState(articles: _favourites));
   }
 }

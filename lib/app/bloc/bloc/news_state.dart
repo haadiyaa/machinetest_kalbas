@@ -18,3 +18,9 @@ class NewsFetchErrorState extends NewsState {
 
   NewsFetchErrorState({required this.msg});
 }
+
+class FavouritesUpdatedState extends NewsState {
+  final List<NewsModel> articles;
+
+  FavouritesUpdatedState({required this.articles});
+}
